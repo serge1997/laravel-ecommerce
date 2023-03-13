@@ -27,7 +27,10 @@
 						<div class="hidden md:flex items-center space-x-1 font-semibold text-gray-700">
 							<a href="{{ route('inicio') }}" class="py-4 px-2">Inicio</a>
 							<a href="{{ route('categoria') }}" class="py-4 px-2 ">Categorias</a>
-							<a href="" class="py-4 px-2 ">Minhas compras</a>
+							@auth
+								<a href="" class="py-4 px-2 ">Minhas compras</a>
+							@endauth
+								
 							<a href="{{ route('carrinho') }}" class="py-1 px-4 rounded text-gray-600 bg-gray-300">
 								<i class="fa-solid fa-cart-shopping"></i>
 							</a>
@@ -35,8 +38,14 @@
 					</div>
 					<!-- Secondary Navbar items -->
 					<div class="flex items-center space-x-3 ">
-						<a href="{{ route('logar') }}" class="py-2 px-2 font-medium text-gray-500 hover:bg-sky-500 hover:text-white transition duration-300">Log In</a>
-						<a href="{{ route('user.cadastra') }}" class="py-2 px-2 font-medium text-white bg-sky-500 hover:bg-sky-400 transition duration-300">Cadastrar</a>
+						@guest
+							<a href="{{ route('logar') }}" class="py-2 px-2 font-medium text-gray-500 hover:bg-sky-500 hover:text-white transition duration-300">Log In</a>
+							<a href="{{ route('user.cadastra') }}" class="py-2 px-2 font-medium text-white bg-sky-500 hover:bg-sky-400 transition duration-300">Cadastrar</a>
+						@endguest
+						@auth
+							<p><i class="text-blue-500">Seja bem vindo, </i>{{ Auth::user()->name }}</p>
+							<a href="{{ route('logout') }}" class="py-2 px-2 font-medium text-white bg-sky-500 hover:bg-sky-400 transition duration-300">Sair</a>
+						@endauth
 					</div>
 					<!-- Mobile menu button -->
 					<div class="md:hidden flex items-center">

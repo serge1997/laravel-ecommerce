@@ -47,6 +47,11 @@ Route::post('/busca/categoria', [Categoriacomponent::class, 'buscar'])
 
 Route::match(['get', 'post'], '/logar', [UserController::class, 'logar'])
     ->name('logar');
+Route::post('/logged', [UserController::class, 'login'])
+    ->name('login');
+
+Route::match(['get', 'post'], '/logout', [UserController::class, 'logout'])
+    ->name("logout");
 
 Route::match(['get', 'post'], '/carrinho', [ProdutoController::class, 'carrinho'])
     ->name("carrinho");

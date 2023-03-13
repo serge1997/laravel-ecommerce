@@ -5,14 +5,14 @@
 <div class="flex justify-center mt-4 font-bold text-lg text-slate-800">
     <h1>Cria sua conta</h1>
 </div>
-<div>
+<div class="p-2 mt-2">
     @if (session('err'))
-        <p class="text-center text-red-600 p-2">{{ session('err') }}</p>
+        <p class="w-1/3 rounded m-auto text-center text-red-600 p-2 bg-red-200">{{ session('err') }}</p>
     @endif
     @if (session('success'))
         <p class="text-center text-green-500 p-2">{{ session('success') }}</p>
     @endif
-    @if ($errors-> any())
+    @if ($errors->any())
         <ul class="text-center text-red-600 p-2">
             @foreach ($errors->all() as $err)
                 <li>*{{ $err }}</li>

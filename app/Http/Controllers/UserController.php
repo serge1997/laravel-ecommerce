@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Endereco;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -67,9 +69,18 @@ class UserController extends Controller
         
        try{
 
+            $emailUnique = User::where('email', $user->email)->first();
+            $cpfUnique = User::where('cpf', $user->cpf)->first();
+
+            if($emailUnique || $cpfUnique){
+                return redirect()->route("user.cadastra")->with("err", "*Usuario já existe no sistema");
+            }
+
+            DB::beginTransaction();
             $user->save();
             $endereco->usuario_id = $user->id;
             $endereco->save();
+            DB::commit();
 
             return redirect()->route("user.cadastra")->with("success", "*Cadastro relizado com successo");
         }catch( \Exception $e){
@@ -78,5 +89,36 @@ class UserController extends Controller
         }
 
         return redirect()->route("user.cadastra");
+    }
+
+    public function login(Request $request)
+    {
+
+        if($request->isMethod("POST")){
+            $credentials = $request->validate([
+            'email'=> ['required', 'email'],
+            'password'=>['required'],
+
+            ],
+
+            [
+            //'email.required' => "Digite seu e-mail",
+            //'password.required' => "Digite sua senha",
+            ]);
+
+            if(Auth::attempt($credentials)){
+                $request->session()->regenerate();
+                return redirect()->intended();
+            }else{
+                return redirect()->route('logar')->with('err', "e-mail ou senha incorreto");
+            }
+
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return view("logar");
     }
 }
