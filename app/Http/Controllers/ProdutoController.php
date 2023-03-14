@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Categoria;
 use App\Models\Produto;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Pedido;
+use DateTime;
+use App\Models\ItensPedido;
 
 class ProdutoController extends Controller
 {
@@ -123,4 +126,34 @@ class ProdutoController extends Controller
 
     }
 
+    public function finalizar()
+    {
+        $hoje = new DateTime();
+
+        $pedido = new Pedido();
+        $pedido->usuario_id = Auth::user()->id;
+        $pedido->emissao = $hoje->format("Y-m-d H:i:s");
+        $pedido->status = 'PENDENTE';
+
+        $pedido->save();
+
+        $produtos = session('cart', []);
+        
+        foreach($produtos as $produto){
+            $itens = new ItensPedido();
+            $itens->produto_id = $produto->id;
+            $itens->pedido_id = $pedido->id;
+            $itens->emissao = $hoje->format("Y-m-d H:i:s");
+            $itens->quantidate = 1;
+            $itens->valorUnitario = $produto->valor;
+
+            $itens->save();
+        }
+
+
+        return redirect()->route("carrinho");
+
+
+        
+    }
 }

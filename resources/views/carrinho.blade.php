@@ -2,7 +2,7 @@
 @section('title', 'Carrinho')
 
 @section('content')
-    <div class="w-full flex justify-center mt-16">
+    <div class="w-full flex flex-col items-center mt-16">
         @if(isset($carrinho) && count($carrinho) > 0)
             <table class="border-collapse border slate-400 w-2/3">
                 <thead>
@@ -61,6 +61,12 @@
                     </th>
                 </tfoot>
             </table>
+            <div>
+                <form action="{{ route('fina.pedido') }}" method="post">
+                    @csrf
+                    <input type="submit" class="px-4 py-1 bg-sky-500 text-white mt-4 cursor-pointer" value="Finalizar compra">
+                </form>
+            </div>
         @endif
         @if (count($carrinho) == 0)
             <p>Carrinho Vazio</p>
