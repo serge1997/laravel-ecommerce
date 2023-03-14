@@ -16,12 +16,22 @@ An e-commerce application in constant development with functionalities like:
 - User loggin and logout.
 - Store, edit products and product category.
 - Order table and itensorder table 
+- Administrator space (To save and update product and category)
 
 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+
+## Technology am using in this project:
+
+- Laravel
+- PHP
+- Javascript(Jquery)
+- Ajax
+- HTML
+- Tailwind
+- MYSQL
+- CSS
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
