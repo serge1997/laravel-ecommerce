@@ -11,7 +11,7 @@
 
 In this project i have a rule of a full stack developper, making front-end and back-end program. 
 An e-commerce application in constant development with functionalities like:
-- [Cart].
+- Cart.
 - [User loggin and logout].
 - [Store, edit products and product category].
 
