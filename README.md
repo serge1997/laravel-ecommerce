@@ -1,7 +1,10 @@
 ## E-commerce Laravel project
 
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imgp1.png" width="600" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imgp1.png" width="600" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imgp2.png" width="600" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imgp3.png" width="600" alt="Laravel Logo"></a></p>
+<p align="center"><a href="#"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imp4.png" width="600" alt="Laravel Logo"></a></p>
 
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
