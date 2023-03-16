@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Pedido;
 use DateTime;
 use App\Models\ItensPedido;
+use Illuminate\Support\Facades\DB;
 
 class ProdutoController extends Controller
 {
@@ -21,10 +22,10 @@ class ProdutoController extends Controller
 
         return view("inicio",[
             'categorias' => Categoria::limit(4)->get(),
-            'qtdmoletom' => Produto::WHERE("categoria_id", 3)->count(),
-            'qtdbasket' => Produto::where("categoria_id", 4)->count(),
-            'qtdmulhere' => Produto::where("categoria_id", 5)->count(),
-            "qtdtenis" => Produto::where("categoria_id", 6)->count(),
+            'qtdmoletom' => Produto::WHERE("categoria_id", 1)->count(),
+            'qtdbasket' => Produto::where("categoria_id", 2)->count(),
+            'qtdmulhere' => Produto::where("categoria_id", 4)->count(),
+            "qtdtenis" => Produto::where("categoria_id", 3)->count(),
         ]);
     }
 
@@ -128,19 +129,23 @@ class ProdutoController extends Controller
 
     public function finalizar()
     {
+        $data = [];
         $hoje = new DateTime();
 
-        $pedido = new Pedido();
-        $pedido->usuario_id = Auth::user()->id;
-        $pedido->emissao = $hoje->format("Y-m-d H:i:s");
-        $pedido->status = 'PENDENTE';
+        if(Auth::user()){
+            $pedido = new Pedido();
+            $pedido->usuario_id = Auth::user()->id;
+            $pedido->emissao = $hoje->format("Y-m-d H:i:s");
+            $pedido->status = 'PENDENTE';
 
-        $pedido->save();
+            $pedido->save();
+        }
 
         $produtos = session('cart', []);
         
         foreach($produtos as $produto){
             $itens = new ItensPedido();
+            $itens->usuario_id = Auth::user()->id;
             $itens->produto_id = $produto->id;
             $itens->pedido_id = $pedido->id;
             $itens->emissao = $hoje->format("Y-m-d H:i:s");
@@ -148,12 +153,28 @@ class ProdutoController extends Controller
             $itens->valorUnitario = $produto->valor;
 
             $itens->save();
+            
         }
 
+        session()->forget('cart');
 
-        return redirect()->route("carrinho");
+        if(Auth::user()){
 
+            $takeUseritens = ItensPedido::where('usuario_id', Auth::user()->id);
+            $userItens = DB::table('itenspedidos')
+                ->join('produtos', 'itenspedidos.produto_id', '=', 'produtos.id')
+                ->where('itenspedidos.usuario_id', Auth::user()->id)
+                ->get();
 
+            $valorfatura = ItensPedido::where('usuario_id', Auth::user()->id)
+                ->sum('valorUnitario');
+        }
+
+    
+        return view("pagar", [
+            'valorfatura' => $valorfatura,
+            'itens' => $userItens
+        ]);
         
     }
 }

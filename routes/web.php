@@ -68,5 +68,5 @@ Route::match(['get', 'post'], '/cadastra', [UserController::class, 'cadastra'])
 Route::match(['get', 'post'], '/usuario/cadastra', [UserController::class, 'store'])
     ->name('store.user');
 
-Route::post('/finalizar/pedido', [ProdutoController::class, 'finalizar'])
+Route::get('/pagar', [ProdutoController::class, 'finalizar'])
     ->name('fina.pedido');

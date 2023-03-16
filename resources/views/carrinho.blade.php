@@ -62,10 +62,11 @@
                 </tfoot>
             </table>
             <div>
-                <form action="{{ route('fina.pedido') }}" method="post">
+                {{--<form action="{{ route('fina.pedido') }}" method="post">
                     @csrf
                     <input type="submit" class="px-4 py-1 bg-sky-500 text-white mt-4 cursor-pointer" value="Finalizar compra">
-                </form>
+                </form> --}}
+                <a href="{{ route('fina.pedido') }}" class="px-4 py-1 bg-sky-500 text-white mt-4">Finalizar compra</a>
             </div>
         @endif
         @if (count($carrinho) == 0)

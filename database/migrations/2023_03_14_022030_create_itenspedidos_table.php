@@ -15,6 +15,7 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('pedido_id')->unsigned();
             $table->integer('produto_id')->unsigned();
+            $table->integer('usuario_id')->unsigned();
             $table->dateTime('emissao');
             $table->integer('quantidate');
             $table->decimal('valorUnitario', 10,2);
@@ -22,6 +23,8 @@ return new class extends Migration
                 ->on('pedidos')->onDelete('cascade');
             $table->foreign('produto_id')->references('id')
                 ->on('produtos')->onDelete('cascade');
+            $table->foreign('usuario_id')->references('id')
+                ->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

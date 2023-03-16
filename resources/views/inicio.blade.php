@@ -35,14 +35,14 @@
                     <a href="{{ route('categoria', $category->id )}}" class="text-md relative z-10 uppercase font-bold px-16">
                         {{ $category->categoria }}
                     </a>
-                    @if ($category->id == 3)
+                    @if ($category->id == 1)
                         <span class="text-xs font-sm uppercase font-medium">produto : {{ $qtdmoletom }}</span>
-                    @elseif($category->id == 4) 
+                    @elseif($category->id == 2) 
                         <span class="text-xs font-sm uppercase font-medium">produto : {{ $qtdbasket }}</span>
-                    @elseif($category->id == 5)
-                        <span class="text-xs font-sm uppercase font-medium">produto : {{ $qtdmulhere }}</span>
-                    @else
+                    @elseif($category->id == 3)
                         <span class="text-xs font-sm uppercase font-medium">produto : {{ $qtdtenis }}</span>
+                    @else
+                        <span class="text-xs font-sm uppercase font-medium">produto : {{ $qtdmulhere }}</span>
                     @endif
                     
                 </div>

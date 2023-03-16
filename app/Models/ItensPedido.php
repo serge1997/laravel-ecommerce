@@ -17,4 +17,9 @@ class ItensPedido extends Model
         'quantidate',
         'valorUnitario'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
