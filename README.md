@@ -1,5 +1,15 @@
 ## E-commerce Laravel project
 
+Para ler esse projeto lacalemente, você presisará de ter na sua máquina:
+- PHP instalado
+- XAMPP
+- Node JS
+- Composer (Gerenciador de pacote PHP)
+
+Para rodar o projeto, na pasta raiz abre o terminal e digite os siguentes comandos: 
+- php artisan serve
+- npm run dev
+- ligue mysql no xampp
 
 <p align="center"><a href="#"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imgp1.png" width="600" alt="Laravel Logo"></a></p>
 <p align="center"><a href="#"><img src="https://raw.githubusercontent.com/serge1997/laravel-ecommerce/main/public/img/imgp2.png" width="600" alt="Laravel Logo"></a></p>
@@ -14,20 +24,20 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-In this project i have a rule of a full stack developper, making front-end and back-end program. 
-An e-commerce application in constant development with functionalities like:
+Neste projeto tenho a regra de um desenvolvedor full stack, fazendo programa front-end e back-end.
+Uma aplicação de e-commerce em constante desenvolvimento com funcionalidades como:
 
-- Cart.
-- User loggin and logout.
-- Store, edit products and product category.
-- Order table and itensorder table 
-- Administrator space (To save and update product and category)
-
-
+- Carrinho.
+- Login e Logout.
+- Armazene, edite produtos e categorias de produtos.
+- Tabela de pedidos e itens de pedidos para processar os pedidos
+- Espaço do Administrador
 
 
 
-## Technology am using in this project:
+
+
+## Linguagem e ferramentas:
 
 - Laravel
 - PHP
