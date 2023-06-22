@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Livewire\Destaquetemplate;
 use App\Http\Livewire\Categoriacomponent;
 use App\Http\Livewire\Produtocomponent;
+use App\Http\Controllers\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,4 +70,38 @@ Route::match(['get', 'post'], '/usuario/cadastra', [UserController::class, 'stor
     ->name('store.user');
 
 Route::get('/pagar', [ProdutoController::class, 'finalizar'])
-    ->name('fina.pedido');
+    ->name('finalizar.pedido');
+
+Route::match(['get', 'post'], '/historico/compra', [ProdutoController::class, 'historicoCompras'])
+    ->name('historico.compra');
+
+Route::match(['get', 'post'], '/historico/itens/pedido', [ProdutoController::class, 'historicoItensPedido'])
+    ->name('itens.pedido');
+
+
+Route::get('administration/dashboard/produtos', [AdministrationController::class, 'getAllProduct'])
+    ->name('produtos.dashboard');
+Route::get('administration/edit/produto/{id}', [AdministrationController::class, 'updateProduct'])
+    ->name('updateProduct');
+
+Route::match(['get', 'post'], 'update/produto', [AdministrationController::class, 'update'])
+    ->name('editar.produto');
+Route::match(['get', 'post'], 'delete/product/{id}', [AdministrationController::class, 'deleteProduct'])
+    ->name('apagar.Produto');
+
+//Reset password 
+
+Route::get('/auth/reset', [ResetPasswordController::class, 'sendEmail'])
+    ->name('form.email');
+
+Route::match(['get', 'post'], '/send/link', [ResetPasswordController::class, 'submitLink'])
+    ->name('SendLink');
+
+Route::get('auth/reset/password/{token}', [ResetPasswordController::class, 'ResetPassword'])
+    ->name('reset.password');
+    
+Route::match(['get', 'post'], 'resete/new/password', [ResetPasswordController::class, 'submitREsetPassword'])
+    ->name('nova.senha');
+
+
+

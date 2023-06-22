@@ -87,13 +87,13 @@ class ProdutoController extends Controller
     {
 
         $produto = Produto::find($id);
+        $quantidate = 0;
 
         if($produto)
         {
             $carrinho = session('cart', []);
             array_push($carrinho, $produto);
             session(['cart' => $carrinho]);
-
             
             return redirect()->route("categoria");
         }
@@ -105,6 +105,7 @@ class ProdutoController extends Controller
 
         $carrinho = session('cart', []);
         $data['carrinho'] = $carrinho;
+
 
         return view("carrinho", $data);
     }
@@ -139,6 +140,11 @@ class ProdutoController extends Controller
             $pedido->status = 'PENDENTE';
 
             $pedido->save();
+
+        }else{
+
+            return redirect()->action([UserController::class, 'logar'])
+                ->with('err', "*Faz o login para finalizar a compra");
         }
 
         $produtos = session('cart', []);
@@ -177,4 +183,32 @@ class ProdutoController extends Controller
         ]);
         
     }
+
+    public function historicoCompras()
+    {
+        $data = [];
+
+        $listaPedido = Pedido::where('usuario_id', Auth::user()->id)
+            ->get();
+
+        $data['listaPedido'] = $listaPedido;
+
+        return view("historico", $data);
+    }
+
+    public function historicoItensPedido(Request $request)
+    {
+        $data = [];
+        $idpedido = $request->idpedido;
+        
+        $listaItens = DB::table('itenspedidos')
+            ->join('produtos', 'itenspedidos.produto_id', '=', 'produtos.id')
+            ->where('pedido_id', $idpedido)
+            ->get();
+
+        $data['ItensList'] = $listaItens;
+
+        //echo json_encode($data);
+        return view('layouts.historicoitens', $data);
+    } 
 }

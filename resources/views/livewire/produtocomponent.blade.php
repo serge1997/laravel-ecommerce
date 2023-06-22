@@ -1,4 +1,4 @@
-<div class="flex flex-row flex-wrap justify-center items-center space-x-2 relative bg-gray-100">
+<div class="conatiner-fluid d-flex flex-row flex-wrap justify-center items-center space-x-2 relative bg-gray-100">
     @foreach ($produtos as $produto)
         <div class="basis-2/5">
             <div class="flex mb-4 flex-wrap bg-white border border-slate-300 rounded-md">
@@ -17,9 +17,9 @@
                         <span class="border border-slate-200 px-3 bg-white rounded py-2">XL</span>
                     </div>
                     <div class="flex space-x-4 mt-4">
-                        <button class="bg-gray-900 border hover:bg-white hover:text-black hover:border-slate-900 text-white px-4 py-1" type="button">Comprar</button>
-                        <a href="{{ route('add.carrinho', $produto->id) }}" class="border px-4 py-1 bg-white border-slate-400">Adicionar</a>
-                        <a href="" data-id = {{ $produto->id }} class="px-2 openModal rounded bg-gray-200 text-slate-600">
+                        <button class="bg-gray-900 border hover:text-black hover:border-slate-900 text-white px-4 py-1" type="button">Comprar</button>
+                        <a href="{{ route('add.carrinho', $produto->id) }}" class="nav-link border px-4 py-1 bg-white border-slate-400">Adicionar</a>
+                        <a href="" data-id = {{ $produto->id }} class="px-2 openModal rounded bg-gray-200 text-slate-600" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <span><i class="mt-2 fa-regular fa-eye"></i></span>
                         </a>
                     </div>

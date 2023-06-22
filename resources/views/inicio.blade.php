@@ -26,13 +26,13 @@
         <small class="text-center">new</small>
         <h2 class="text-center text-xl font-bold overline decoration-sky-500 decoration-4 mt-2">lista catalogo</h2>
     </div>
-    <div class="w-full p-4 flex lg:flex-row md:flex-col sm:flex-col flex-wrap space-x-8 justify-center">
+    <div class="container p-4 flex lg:flex-row md:flex-col sm:flex-col flex-wrap space-x-8 justify-center">
        @if (isset($categorias))
            @foreach ($categorias as $category)
            <div class="lg:w-1/5 md:w-full bg-white flex flex-col items-center border border-slate-300 rounded">
                 <img src="/img/categoria/{{$category->image}}" class="w-52" alt="">
                 <div class="flex flex-col text-center mb-20 relative z-10 px-16 p-2 bg-gray-100">
-                    <a href="{{ route('categoria', $category->id )}}" class="text-md relative z-10 uppercase font-bold px-16">
+                    <a href="{{ route('categoria', $category->id )}}" class="nav-link text-md relative z-10 uppercase font-bold px-16">
                         {{ $category->categoria }}
                     </a>
                     @if ($category->id == 1)
@@ -73,7 +73,7 @@
             </div>
         </div>
     </div>
-    <div class="flex flex-row flex-wrap justify-center items-center space-x-4 bg-gray-100">
+    <div class="container-fluid flex flex-row flex-wrap justify-center items-center space-x-4 bg-gray-100">
     <livewire:styles />
         <livewire:destaquetemplate />
     <livewire:scripts />
@@ -85,7 +85,7 @@
             </h2>
         </div>
         <div>
-            <div class="flex flex row justify-center mt-6">
+            <div class="flex flex-row justify-center mt-6">
                 <svg class="animate-bounce" width="110" height="101" viewBox="0 0 110 101" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_2_2)">
                 <rect width="0" height="0" transform="translate(108.395) rotate(89.4755)" fill="#fff"/>
@@ -101,32 +101,27 @@
             </div>
         </div>
     </div>
-    <div>
+    <div class="container-fluid">
         <livewire:styles />
             <livewire:produtocomponent />
         <livewire:scripts />
     </div>
-    <div class="fixed z-10 inset-0 invisible overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true" id="interestModal">
-        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
-                <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">​</span>
-                <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle md:w-2/3">
-                    <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                        <div class="sm:flex justify-center sm:items-start">
-                            <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                                <div class="w-full mt-2 show-conteudo">
-                                            
-                                </div>
-                            </div>
-                    </div>
-                    </div>
-                    <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                    <button type="button" class="closeModal bg-red-600 mt-3 w-full inline-flex justify-center border border-gray-300 shadow-sm px-4 py-2 text-base font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                        Fechar
-                    </button>
-                    </div>
-            </div>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="exampleModalLabel">Ver o produto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <div class="modal-body show-conteudo">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="py-1 text-white px-4 bg-danger" data-bs-dismiss="modal">Fechar</button>
+        </div>
+      </div>
     </div>
+  </div>
     
 @endsection

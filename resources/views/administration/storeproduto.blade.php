@@ -1,4 +1,4 @@
-<form class="mt-6 p-4" action="{{ route('store.produto') }}" method="post" enctype="multipart/form-data">
+<form class="mt-6 p-4 border bg-white" action="{{ route('store.produto') }}" method="post" enctype="multipart/form-data">
     @csrf
     @if ($errors->any())
         <div>
@@ -35,7 +35,7 @@
     </div>
     <div class="w-2/3 m-auto flex mt-4 space-x-2 flex flex-col">
         <label for="">Imagem do produto: </label>
-        <input type="file" name="foto" id="foto">
+        <input class="form-control" type="file" name="foto" id="foto">
     </div>
     <div class="w-2/3 m-auto flex mt-4 space-x-2 flex flex-col">
         <label for="">categoria produto: </label>

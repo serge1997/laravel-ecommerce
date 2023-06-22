@@ -17,8 +17,8 @@
                     <span class="border border-slate-200 px-3 bg-white rounded py-2">XL</span>
                 </div>
                 <div class="flex space-x-4 mt-4">
-                    <button class="bg-gray-900 border hover:bg-white hover:text-black hover:border-slate-900 text-white px-4 py-1" type="button">Comprar</button>
-                    <a href="{{route('add.carrinho', $show->id)}}" class="border px-4 py-1 bg-white border-slate-400">Adicionar</a>
+                    <button class="bg-gray-900 border hover:text-black hover:border-slate-900 text-white px-4 py-1" type="button">Comprar</button>
+                    <a href="{{route('add.carrinho', $show->id)}}" class="nav-link border px-4 py-1 bg-white border-slate-400">Adicionar</a>
                 </div>
             </div>
         </div>

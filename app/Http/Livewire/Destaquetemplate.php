@@ -17,5 +17,6 @@ class Destaquetemplate extends Component
         return view('livewire.destaquetemplate', [
             'destaques' => Produto::WHERE("destaque", true)->limit(2)->get(),
         ]);
-    }
+    } 
+    
 }

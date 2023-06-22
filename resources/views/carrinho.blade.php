@@ -1,6 +1,8 @@
 @extends('layouts.main')
 @section('title', 'Carrinho')
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 @section('content')
     <div class="w-full flex flex-col items-center mt-16">
         @if(isset($carrinho) && count($carrinho) > 0)
@@ -27,17 +29,20 @@
                             {{ $produto->nome }}
                         </td>
                         <td>
-                            <select name="" id="quantidada" class="w-full p-1 border border-slate-300">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                            </select>
+                            <div class="dropdown">
+                              <input class="btn dropdown-toggle text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false" value="1">
+                              <ul class="dropdown-menu hidden dropdown-menu-white">
+                                <li><input type="button" class="dropdown-item" value="1"></li>
+                                <li><input type="button" class="dropdown-item" value="2"></li>
+                                <li><input type="button" class="dropdown-item" value="3"></li>
+                                <li><input type="button" class="dropdown-item" value="4"></li>
+                                <li><input type="button" class="dropdown-item" value="5"></li>
+                                <li><input type="button" class="dropdown-item" value="6"></li>
+                              </ul>
+                            </div>
                         </td>
                         <td class="p-2">
-                            {{ $produto->valor }}
+                            <input type="button" value="{{ $produto->valor }}" class="valor">
                         </td>
                         <td>
                             <a href="{{ route('remove.carrinho', ['indice' =>$indice])}}" class="text-red-600 inline-flex">
@@ -62,11 +67,11 @@
                 </tfoot>
             </table>
             <div>
-                {{--<form action="{{ route('fina.pedido') }}" method="post">
+                <form action="{{ route('finalizar.pedido') }}" method="post">
                     @csrf
                     <input type="submit" class="px-4 py-1 bg-sky-500 text-white mt-4 cursor-pointer" value="Finalizar compra">
-                </form> --}}
-                <a href="{{ route('fina.pedido') }}" class="px-4 py-1 bg-sky-500 text-white mt-4">Finalizar compra</a>
+                </form> 
+                <a href="{{ route('finalizar.pedido') }}" class="px-4 py-1 bg-sky-500 text-white mt-4">Finalizar compra</a>
             </div>
         @endif
         @if (count($carrinho) == 0)

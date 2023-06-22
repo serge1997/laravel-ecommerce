@@ -35,7 +35,12 @@ class UserController extends Controller
             'confirmpassword' => ['required'],
             'password' => ['required'],
             'cep' => ['required'],
-            'cidade' => ['required']
+            'cidade' => ['required'],
+            'rua' => ['required'],
+            'complemento' => ['required'],
+            'estado' => ['required'],
+            'numero' => ['required']
+            
         ],
 
         [
@@ -44,13 +49,15 @@ class UserController extends Controller
             'cpf.required' => "Cpf obrigatorio",
             'email.required' => "E-mail obrigatorio",
             'password.required' => "Senha obrigatorio",
-            'confirmpassword' => "Confirme a senha para continuar",
-            'cep' => "Cep obrigatorio",
-            "cidade" => "Cidade obrigatorio"
+            'confirmpassword.required' => "Confirme a senha para continuar",
+            'cep.required' => "Cep obrigatorio",
+            'cidade.required' => "Cidade obrigatorio",
+            'rua.required' => "Rua obrigatorio",
+            'complemento.required' => "Complemento obrigatorio"
         ]);
 
         if(substr_count($request->input("email"), "@") != 1 || substr_count($request->input("email"), ".") == 0 ){
-            return redirect()->route('user.cadastra')->with("err", "*Formato do e-mail invalido");
+            return back()->withInput()->with("err", "*Formato do e-mail invalido");
         }
 
         if($request->password != $request->confirmpassword){
@@ -73,7 +80,7 @@ class UserController extends Controller
             $cpfUnique = User::where('cpf', $user->cpf)->first();
 
             if($emailUnique || $cpfUnique){
-                return redirect()->route("user.cadastra")->with("err", "*Usuario já existe no sistema");
+                return back()->withInput()->with("err", "*Usuario já existe no sistema");
             }
 
             DB::beginTransaction();
@@ -110,7 +117,7 @@ class UserController extends Controller
                 $request->session()->regenerate();
                 return redirect()->intended();
             }else{
-                return redirect()->route('logar')->with('err', "e-mail ou senha incorreto");
+                return back()->withInput()->with("err", "Usuario ou senha incoreto");
             }
 
         }
