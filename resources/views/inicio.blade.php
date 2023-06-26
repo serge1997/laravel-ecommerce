@@ -6,17 +6,17 @@
         <div class="flex flex-col p-8 space-y-8 mt-8">
             <div class="uppercase">
                 <h3 class="text-lg">
-                    summer 2023 
+                    verão 2023 
                 </h3>
             </div>
             <div class="uppercase lg:text-3xl md:text-3xl sm:text-xl font-bold">
                 <h1>
-                    chegada de nova coleção
+                    nova coleção
                 </h1>
             </div>
             <div>
                 <button type="button" class="border uppercase bg-black text-white py-2 px-2 hover:text-black hover:bg-slate-200 hover:border-slate-900">
-                    compra agora
+                    comprar agora
                 </button>
             </div>
         </div>

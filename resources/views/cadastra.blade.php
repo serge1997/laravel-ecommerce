@@ -114,14 +114,14 @@
                         <div class="w-100 d-flex justify-content-center align-content-center mb-4">
                             <div class="form-group w-50 px-2">
                                 <label class="fs-5" for="">Senha: </label>
-                                <input class="form-control mt-2" type="password" name="password" value="{{ old('password') }}" id="rua" placeholder="nome da rua">
+                                <input class="form-control mt-2" type="password" name="password" value="{{ old('password') }}" id="rua" placeholder="senha">
                                 @if($errors->has('password'))
                                     <span class="text-lowercase text-danger p-0">{{ $errors->first('password') }}</span>
                                 @endif
                             </div>
                             <div class="form-group w-50 px-2">
                                 <label class="fs-5" for="">Confirm a senha: </label>
-                                <input class="form-control mt-2" type="password" name="confirmpassword" id="confirmpassword" value="{{ old('confirmpassword') }}" placeholder="Complemento endereço">
+                                <input class="form-control mt-2" type="password" name="confirmpassword" id="confirmpassword" value="{{ old('confirmpassword') }}" placeholder="Confirme sua senha">
                                 @if($errors->has('confirmpassword'))
                                     <span class="text-lowercase text-danger p-0">{{ $errors->first('confirmpassword') }}</span>
                                 @endif

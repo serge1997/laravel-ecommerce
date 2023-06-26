@@ -32,8 +32,8 @@ class UserController extends Controller
             'celula' => ['required'],
             'cpf' => ['required'],
             'email' => ['required'],
-            'confirmpassword' => ['required'],
-            'password' => ['required'],
+            'confirmpassword' => ['required', 'min:8'],
+            'password' => ['required', 'min:8'],
             'cep' => ['required'],
             'cidade' => ['required'],
             'rua' => ['required'],
@@ -45,10 +45,12 @@ class UserController extends Controller
 
         [
             'name.required' => "Nome obrigatorio",
-            'celula.required' => "Numero celula obrigatorio",
+            'celula.required' => "Numero do celular obrigatorio",
             'cpf.required' => "Cpf obrigatorio",
             'email.required' => "E-mail obrigatorio",
             'password.required' => "Senha obrigatorio",
+            'password.min' => "Senha invalida, minimo 8 caracteres",
+            'confirmpassword' => "Senha invalida, minimo 8 caracteres",
             'confirmpassword.required' => "Confirme a senha para continuar",
             'cep.required' => "Cep obrigatorio",
             'cidade.required' => "Cidade obrigatorio",
@@ -80,7 +82,7 @@ class UserController extends Controller
             $cpfUnique = User::where('cpf', $user->cpf)->first();
 
             if($emailUnique || $cpfUnique){
-                return back()->withInput()->with("err", "*Usuario já existe no sistema");
+                return back()->withInput()->with("err", "*Usuario já está cadastrado no sistema");
             }
 
             DB::beginTransaction();
@@ -109,15 +111,15 @@ class UserController extends Controller
             ],
 
             [
-            //'email.required' => "Digite seu e-mail",
-            //'password.required' => "Digite sua senha",
+            'email.required' => "Informe o seu e-mail",
+            'password.required' => "Informe a sua senha",
             ]);
 
             if(Auth::attempt($credentials)){
                 $request->session()->regenerate();
                 return redirect()->intended();
             }else{
-                return back()->withInput()->with("err", "Usuario ou senha incoreto");
+                return back()->withInput()->with("err", "Usuario ou senha é invalido");
             }
 
         }

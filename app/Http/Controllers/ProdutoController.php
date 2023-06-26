@@ -42,7 +42,7 @@ class ProdutoController extends Controller
             'nome.required' => "nome do produto obrigarorio",
             'valor.required' => "valor do produto obrigatorio",
             'foto.required' => "imagem do produto requerido",
-            'categoria_id.required' => "escolhe uma opção de categoria",
+            'categoria_id.required' => "escolha uma opção para categoria",
         ]);
 
         
@@ -144,7 +144,7 @@ class ProdutoController extends Controller
         }else{
 
             return redirect()->action([UserController::class, 'logar'])
-                ->with('err', "*Faz o login para finalizar a compra");
+                ->with('err', "*Fazer o login para finalizar a compra");
         }
 
         $produtos = session('cart', []);

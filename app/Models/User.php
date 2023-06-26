@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'confirmpassword',
         'celula',
-        'cpf'
+        'cpf',
+        'adm'
     ];
 
     /**

@@ -9,3 +9,13 @@
 .log {
     text-decoration: none;
 }
+
+body {
+    overflow-x: hidden;
+}
+
+#social-icon {
+    border: 1px solid #64748b;
+    padding: 6px;
+    border-radius: 50%;
+}

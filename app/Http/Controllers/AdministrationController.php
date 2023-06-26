@@ -73,10 +73,10 @@ class AdministrationController extends Controller
             }
             
             return redirect()->route('produtos.dashboard')
-                ->with("success", "Produto editado com sucesso");
+                ->with("success", "Produto alterado com sucesso");
             
         }catch(\Exception $e) {
-            return back()->withInput()->with("err", "erro ao editar o produto, tente novamente".$e->getMessage());
+            return back()->withInput()->with("err", "erro ao alterar o produto, tente novamente".$e->getMessage());
             Log::error("ERRO", ["file" => "AdministrationController.update", "message" => $e->getMessage()]);
         }
     }
@@ -86,6 +86,6 @@ class AdministrationController extends Controller
         Produto::where('id', $id)->delete();
 
         return redirect()->route('produtos.dashboard')
-            ->with("err", "Produto Apagado com sucess");
+            ->with("err", "Produto excluido com sucesso");
     }
 }

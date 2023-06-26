@@ -9,6 +9,8 @@ use App\Http\Livewire\Destaquetemplate;
 use App\Http\Livewire\Categoriacomponent;
 use App\Http\Livewire\Produtocomponent;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Middleware\UserRole;
+use App\Http\Controllers\PedidoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,19 +26,6 @@ use App\Http\Controllers\ResetPasswordController;
 Route::match(['get', 'post'], '/', [ProdutoController::class, 'index'])
     ->name('inicio');
 
-Route::match(['get', 'post'], '/administraçao/produto', [AdministrationController::class, 'addProduto'])
-    ->name('cadastrar.produto');
-
-Route::match(['get', 'post'], '/cadastra/produto', [ProdutoController::class, 'store'])
-    ->name('store.produto');
-
-
-Route::match(['get', 'post'], '/administracao/categoria', [AdministrationController::class, 'addCategoria'])
-    ->name('cadastrar.categoria');
-
-Route::match(['get', 'post'], '/cadastra/categoria', [CategoriaController::class, 'store'])
-    ->name('store.categoria');
-
 Route::match(['get', 'post'], '/categoria/{id?}', [Categoriacomponent::class, 'render'])
     ->name("categoria");
 
@@ -47,7 +36,8 @@ Route::post('/busca/categoria', [Categoriacomponent::class, 'buscar'])
     ->name("buscar");
 
 Route::match(['get', 'post'], '/logar', [UserController::class, 'logar'])
-    ->name('logar');
+    ->name('logar')->middleware('guest');
+
 Route::post('/logged', [UserController::class, 'login'])
     ->name('login');
 
@@ -64,10 +54,10 @@ Route::match(['get', 'post'], 'remover/item/carrinho/{indice}', [ProdutoControll
     ->name("remove.carrinho");
 
 Route::match(['get', 'post'], '/cadastra', [UserController::class, 'cadastra'])
-    ->name("user.cadastra");
+    ->name("user.cadastra")->middleware('guest');
 
 Route::match(['get', 'post'], '/usuario/cadastra', [UserController::class, 'store'])
-    ->name('store.user');
+    ->name('store.user')->middleware('guest');
 
 Route::get('/pagar', [ProdutoController::class, 'finalizar'])
     ->name('finalizar.pedido');
@@ -78,16 +68,35 @@ Route::match(['get', 'post'], '/historico/compra', [ProdutoController::class, 'h
 Route::match(['get', 'post'], '/historico/itens/pedido', [ProdutoController::class, 'historicoItensPedido'])
     ->name('itens.pedido');
 
+//---- administrador 
+Route::match(['get', 'post'], '/administraçao/produto', [AdministrationController::class, 'addProduto'])
+    ->name('cadastrar.produto')->middleware(UserRole::class);;
+
+Route::match(['get', 'post'], '/cadastra/produto', [ProdutoController::class, 'store'])
+    ->name('store.produto')->middleware(UserRole::class);
+
+
+Route::match(['get', 'post'], '/administracao/categoria', [AdministrationController::class, 'addCategoria'])
+    ->name('cadastrar.categoria')->middleware(UserRole::class);;
+
+Route::match(['get', 'post'], '/cadastra/categoria', [CategoriaController::class, 'store'])
+    ->name('store.categoria')->middleware(UserRole::class);
 
 Route::get('administration/dashboard/produtos', [AdministrationController::class, 'getAllProduct'])
-    ->name('produtos.dashboard');
+    ->name('produtos.dashboard')->middleware(UserRole::class);
+
 Route::get('administration/edit/produto/{id}', [AdministrationController::class, 'updateProduct'])
-    ->name('updateProduct');
+    ->name('updateProduct')->middleware(UserRole::class);
 
 Route::match(['get', 'post'], 'update/produto', [AdministrationController::class, 'update'])
-    ->name('editar.produto');
+    ->name('editar.produto')->middleware(UserRole::class);
+
 Route::match(['get', 'post'], 'delete/product/{id}', [AdministrationController::class, 'deleteProduct'])
-    ->name('apagar.Produto');
+    ->name('apagar.Produto')->middleware(UserRole::class);
+
+Route::get('admisitarador/pedido', [PedidoController::class, 'indexOrder'])
+    ->name('pedidos')->middleware(UserRole::class);;
+
 
 //Reset password 
 

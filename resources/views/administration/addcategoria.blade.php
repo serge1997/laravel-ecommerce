@@ -1,6 +1,6 @@
 @extends("layouts.adm")
 @section("title", "adicionar categoria")
-
+<link rel="stylesheet" href="../css/style.css">
 
 @section("content")
 <div class="m-auto text-xl p-4 font-bold">

@@ -9,11 +9,11 @@
             <table class="border-collapse border slate-400 w-2/3">
                 <thead>
                     <tr>
-                        <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">image</th>
+                        <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">imagem</th>
                         <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">nome</th>
-                        <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">quantidate</th>
+                        <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">quantidade</th>
                         <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">valor</th>
-                        <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">apagar</th>
+                        <th class="border border-slate-400 p-2 text-slate-600 uppercase font-normal">excluir</th>
                     </tr>
                 </thead>
                 @php
@@ -66,11 +66,11 @@
                     </th>
                 </tfoot>
             </table>
-            <div>
-                <form action="{{ route('finalizar.pedido') }}" method="post">
+            <div class="mt-4">
+                {{--<form action="{{ route('finalizar.pedido') }}" method="post">
                     @csrf
                     <input type="submit" class="px-4 py-1 bg-sky-500 text-white mt-4 cursor-pointer" value="Finalizar compra">
-                </form> 
+                </form>--}}
                 <a href="{{ route('finalizar.pedido') }}" class="px-4 py-1 bg-sky-500 text-white mt-4">Finalizar compra</a>
             </div>
         @endif

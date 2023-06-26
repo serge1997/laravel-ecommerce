@@ -1,4 +1,5 @@
 @extends("layouts.main")
+<link rel="stylesheet" href="../css/style.css">
     <div class="col-md-2 position-fixed min-vh-100 bg-white z-1 shadow sidebar">
         <div class="d-flex flex-column">
             <div class="sidebar-header mb-4 d-flex justify-content-between p-2">
@@ -8,21 +9,25 @@
                 <button id="close" class="btn text-danger border-0"><i class="fa-sharp fa-solid fa-circle-xmark"></i></button>
             </div>
             <div class="sidebar-body d-flex flex-column mt-4 p-4">
-                <a class="nav-link mt-2 p-1" href="{{ route('cadastrar.produto') }}" class="hover:text-fuchsia-700">
+                <a class="nav-link mt-2 p-1 fs-5" href="{{ route('cadastrar.produto') }}" class="hover:text-fuchsia-700">
                     <i class="fa-solid fa-shirt text-slate-700"></i>
                     Adicionar produto
                 </a>
-                <a class="nav-link mt-2 p-1" href="{{ route('cadastrar.categoria') }}" class="hover-text-rose-700 hover:text-rose-700">
+                <a class="nav-link mt-2 p-1 fs-5" href="{{ route('cadastrar.categoria') }}" class="hover-text-rose-700 hover:text-rose-700">
                     <i class="fa-solid fa-layer-group text-slate-700"></i>
                     Adicionar categoria
                 </a>
-                <a class="nav-link mt-2 p-1" href="{{ route('produtos.dashboard') }}" class="hover:text-fuchsia-700">
+                <a class="nav-link mt-2 p-1 fs-5" href="{{ route('produtos.dashboard') }}" class="hover:text-fuchsia-700">
                     <i class="fa-solid fa-list text-slate-700"></i>
-                    Lista produtos
+                    Lista de produtos
                 </a>
-                <a class="nav-link mt-2 p-1" href="#" class="hover:text-rose-700">
+                <a class="nav-link mt-2 p-1 fs-5" href="#" class="hover:text-rose-700">
                     <i class="fa-solid fa-list text-slate-700"></i>
-                    Lista categorias
+                    Lista de categorias
+                </a>
+                <a class="nav-link mt-2 p-1 fs-5" href="{{ route('pedidos') }}" class="hover:text-rose-700">
+                    <i class="fa-solid fa-money-bill-trend-up text-slate-700"></i>
+                    Pedidos
                 </a>
             </div>
         </div>

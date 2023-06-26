@@ -20,7 +20,7 @@ class CategoriaController extends Controller
             'categoria' => ['required'],
         ],
         [
-            'categoria.required' => "nome da categoria obrigatorio",
+            'categoria.required' => "O nome da categoria é obrigatorio",
         ]);
 
         $values = $request->all();
@@ -41,7 +41,7 @@ class CategoriaController extends Controller
             $categoriaUnico = Categoria::WHERE("categoria",$categoria->categoria)->first();
 
             if($categoriaUnico){
-                return redirect()->route('cadastrar.categoria')->with("err", "*erro, Categoria já existe no sistema");
+                return redirect()->route('cadastrar.categoria')->with("err", "*erro, Categoria já está cadastrada no sistema");
             }
 
             DB::beginTransaction();

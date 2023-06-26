@@ -18,7 +18,7 @@
                     </div>
                     <div class="flex space-x-4 mt-4">
                         <button class="bg-gray-900 border hover:bg-white hover:text-black hover:border-slate-900 text-white px-4 py-1" type="button">Comprar</button>
-                        <a href="{{ route('add.carrinho', $produto->id) }}" class="border px-4 py-1 bg-white border-slate-400">Adicionar</a>
+                        <a href="{{ route('add.carrinho', $produto->id) }}" class="nav-link border px-4 py-1 bg-white border-slate-400">Adicionar</a>
                         <a href="#" data-id = {{ $produto->id }} class="px-2 openModal rounded bg-gray-200 text-slate-600">
                             <span><i class="mt-2 fa-regular fa-eye"></i></span>
                         </a>
@@ -30,6 +30,6 @@
     {{$produtos->links() }}
 
     @if (count($produtos) == 0)
-        <h1>Não resultado para sua pesquisa</h1>
+        <h6 class="text-danger">Não há dados para sua pesquisa</h6>
     @endif
 <div>

@@ -41,7 +41,7 @@
                 <a class="nav-link text-center" href="{{ route('form.email') }}">Esqueceu sua senha ?</a>
               </div>
               <div class="input flex mt-4 p-2">
-                <input class="border w-72 bg-black text-white cursor-pointer hover:bg-white hover:text-black hover:border-slate-900 p-2" type="submit" value="Sign-up">
+                <input class="border w-72 bg-black text-white cursor-pointer hover:bg-white hover:text-black hover:border-slate-900 p-2" type="submit" value="Entrar">
               </div>
             </form>
           </div>

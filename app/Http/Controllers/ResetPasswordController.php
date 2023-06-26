@@ -36,7 +36,7 @@ class ResetPasswordController extends Controller
         $checkEmail = User::where('email', $email)->first();
 
         if(!$checkEmail) {
-            return back()->withInput()->with("err", "O e-email informado não existe no sistema");
+            return back()->withInput()->with("err", "O e-email informado não está cadastrado no sistema");
         }
 
         $emailExist = DB::table('password_reset_tokens')
@@ -60,7 +60,7 @@ class ResetPasswordController extends Controller
         });
 
         return redirect()->route('form.email')
-            ->with('success', "O e-mail de redefinção foi enviado com sucesso");
+            ->with('success', "O e-mail de redefinição de senha foi enviado com sucesso");
 
     }
 
@@ -88,7 +88,7 @@ class ResetPasswordController extends Controller
         $confsenha = $request->confirmpassword;
 
         if($senha != $confsenha){
-            return back()->withInput()->with('err', "Senhas devem ser iguais!");
+            return back()->withInput()->with('err', "As senhas devem ser iguais!");
         }
 
         $checkToken = DB::table('password_reset_tokens')
@@ -114,7 +114,7 @@ class ResetPasswordController extends Controller
         DB::table('password_reset_tokens')->where(['email'=>$request->email])->delete();
 
         return redirect()->route('logar')
-            ->with('success', "Senha atualizado com sucesso, faz seu login");
+            ->with('success', "A senha atualizada com sucesso, faça seu login");
     }
     
 }
