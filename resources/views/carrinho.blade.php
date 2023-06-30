@@ -1,8 +1,5 @@
 @extends('layouts.main')
 @section('title', 'Carrinho')
-
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 @section('content')
     <div class="w-full flex flex-col items-center mt-16">
         @if(isset($carrinho) && count($carrinho) > 0)
@@ -29,16 +26,24 @@
                             {{ $produto->nome }}
                         </td>
                         <td>
-                            <div class="dropdown">
-                              <input class="btn dropdown-toggle text-dark" type="button" data-bs-toggle="dropdown" aria-expanded="false" value="1">
-                              <ul class="dropdown-menu hidden dropdown-menu-white">
-                                <li><input type="button" class="dropdown-item" value="1"></li>
-                                <li><input type="button" class="dropdown-item" value="2"></li>
-                                <li><input type="button" class="dropdown-item" value="3"></li>
-                                <li><input type="button" class="dropdown-item" value="4"></li>
-                                <li><input type="button" class="dropdown-item" value="5"></li>
-                                <li><input type="button" class="dropdown-item" value="6"></li>
-                              </ul>
+                            <div class="btn-group">
+                                <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    1
+                                </button>
+                                <ul class="dropdown-menu">
+                                 <li>
+                                    <a class="nav-link text-center" href="">1</a>
+                                 </li>
+                                 <li>
+                                    <a class="nav-link text-center" href="">2</a>
+                                 </li>
+                                 <li>
+                                    <a class="nav-link text-center" href="">3</a>
+                                 </li>
+                                 <li>
+                                    <a class="nav-link text-center" href="">4</a>
+                                 </li>
+                                </ul>
                             </div>
                         </td>
                         <td class="p-2">

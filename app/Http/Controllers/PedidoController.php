@@ -22,4 +22,15 @@ class PedidoController extends Controller
         return view('pedido.pedido', $data);
     }
 
+    public function OrderStatus(Request $request)
+    {
+        $id = $request->pedido_id;
+
+        $status = DB::table('pedidos')->where('id', $id)
+            ->update([
+                'status' => $request->status
+        ]);
+
+        return redirect()->route('pedidos');
+    }
 }

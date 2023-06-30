@@ -87,14 +87,12 @@ class ProdutoController extends Controller
     {
 
         $produto = Produto::find($id);
-        $quantidate = 0;
-
+    
         if($produto)
         {
             $carrinho = session('cart', []);
             array_push($carrinho, $produto);
             session(['cart' => $carrinho]);
-            
             return redirect()->route("categoria");
         }
     }

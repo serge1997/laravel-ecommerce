@@ -48,7 +48,28 @@
                             <td>{{ $order->celula }}</td>
                             <td>{{ $order->email }} <a class="text-slate-800" href="mailto:{{$order->email}}"><i class="fa-solid fa-envelope"></i></a></td>
                             <td>{{ $order->valorUnitario }}</td>
-                            <td>{{ $order->status }}</td>
+                            <td class="text-uppercase">
+                                <form action="{{ route('update.status') }}" class="w-75 d-flex">
+                                    @csrf
+                                    <input type="hidden" name="pedido_id" value="{{ $order->pedido_id }}">
+                                    <select name="status" id="" class="form-control text-uppercase rounded-0">
+                                        <option value="pendente">pendente</option>
+                                        <option value="confirmado">confirmado</option>
+                                        <option value="entregando">entregando</option>
+                                        <option value="cancelado">cancelado</option>
+                                        <option value="entregado">entregado</option>
+                                    </select>
+                                    <input class="py-1 px-2 text-uppercase bg-slate-900 text-white" type="submit" value="ok">
+                                </form>
+
+                                @if ($order->status == 'pendente' || $order->status == 'cancelado')
+                                    <p class="alert alert-danger rounded-0 py-1 fw-medium text-center">{{ $order->status }}</p>
+                                @elseif ($order->status == 'entregado')
+                                    <p class="alert alert-success rounded-0 py-1 fw-medium text-center">{{ $order->status }}</p>
+                                @else
+                                    <p class="alert alert-warning py-1 rounded-0 fw-medium text-center">{{ $order->status }}</p>
+                                @endif
+                            </td>
                             <td>
             
                             </td>

@@ -95,7 +95,10 @@ Route::match(['get', 'post'], 'delete/product/{id}', [AdministrationController::
     ->name('apagar.Produto')->middleware(UserRole::class);
 
 Route::get('admisitarador/pedido', [PedidoController::class, 'indexOrder'])
-    ->name('pedidos')->middleware(UserRole::class);;
+    ->name('pedidos')->middleware(UserRole::class);
+
+Route::match(['get', 'post'], '/status', [PedidoController::class, 'OrderStatus'])
+    ->name('update.status')->middleware(UserRole::class);
 
 
 //Reset password 
